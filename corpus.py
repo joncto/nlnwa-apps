@@ -72,7 +72,7 @@ with col3:
     year = today.year
     years = st.slider(
     'Årsspenn',
-    2019, 2022, (2022, 2022))
+    2019, 2022, (2019, 2022))
 
 
 #st.subheader("Søk etter ord eller fraser") ##########################################################
