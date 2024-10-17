@@ -78,12 +78,12 @@ with col3:
 #st.subheader("Forfatter og tittel") ###################################################
 cola, colb = st.columns(2)
 with cola:
-    publisher = st.text_input("Publisher", "",
-                           help="Angi domenenavn",)
+    title = st.text_input("Tittel", "",
+                          help="Tittel er det samme som navnet på nettavisen")
 
 with colb:
-    title = st.text_input("Tittel", "",
-                          help="Søk etter titler. For aviser vil tittel matche avisnavnet.")
+    publisher = st.text_input("Domenenavn", "",
+                           help="Angi domenenavn, f.eks. nrk.no",)
 
 #st.subheader("Meta- og innholdsdata") ##########################################################
 
