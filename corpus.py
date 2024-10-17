@@ -1,7 +1,5 @@
 from collections import Counter
 import streamlit as st
-#import spacy_streamlit
-
 import pandas as pd
 from PIL import Image
 import urllib
@@ -14,7 +12,7 @@ from dhlab.text.nbtokenizer import tokenize
 # for excelnedlastning
 from io import BytesIO
 
-st.set_page_config(page_title="Korpus", page_icon=None, layout="wide", initial_sidebar_state="auto", menu_items=None)
+st.set_page_config(page_title="Nettaviser - Korpus", page_icon=None, layout="wide", initial_sidebar_state="auto", menu_items=None)
 
 max_size_corpus = 100000
 max_rows = 1200
@@ -63,7 +61,7 @@ with col2:
         ["nob", "nno", "sma", "sme", "smj", "fkv", "eng", "dan", "swe", "fra", "spa", "ger"],  
         help="Velg fra listen"
     )
-    lang = " AND ".join(list(lang))
+    lang = " OR ".join(list(lang))
     if lang == "":
         lang = None
 
