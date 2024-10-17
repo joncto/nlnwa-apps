@@ -72,8 +72,19 @@ with col3:
     year = today.year
     years = st.slider(
     'Årsspenn',
-    2019, year, (2022, year))
+    2019, 2022, (2022, 2022))
 
+
+#st.subheader("Søk etter ord eller fraser") ##########################################################
+
+cold, cole, colf = st.columns(3)
+with cold:        
+    fulltext = st.text_input(
+        "Ord eller fraser i teksten", 
+        "", 
+        help="Matching på innholdsord skiller ikke mellom stor og liten bokstav."
+             " Trunkert søk er mulig, slik at demokrat* vil finne bøker som inneholder demokrati og demokratisk blant andre treff",
+    )
 
 #st.subheader("Forfatter og tittel") ###################################################
 cola, colb = st.columns(2)
@@ -84,17 +95,6 @@ with cola:
 with colb:
     publisher = st.text_input("Domenenavn", "",
                            help="Angi domenenavn, f.eks. nrk.no",)
-
-#st.subheader("Meta- og innholdsdata") ##########################################################
-
-cold, cole, colf = st.columns(3)
-with cold:        
-    fulltext = st.text_input(
-        "Ord eller fraser i teksten", 
-        "", 
-        help="Matching på innholdsord skiller ikke mellom stor og liten bokstav."
-             " Trunkert søk er mulig, slik at demokrat* vil finne bøker som inneholder demokrati og demokratisk blant andre treff",
-    )
 
 
 df_defined = False
