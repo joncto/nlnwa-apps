@@ -79,7 +79,7 @@ with col3:
 cola, colb = st.columns(2)
 with cola:
     publisher = st.text_input("Publisher", "",
-                           help="Angi domenenavn",
+                           help="Angi domenenavn",)
 
 with colb:
     title = st.text_input("Tittel", "",
