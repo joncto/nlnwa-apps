@@ -77,7 +77,7 @@ with col3:
 
 #st.subheader("Søk etter ord eller fraser") ##########################################################
 
-cold, cole, colf = st.columns(3)
+cold = st.columns(3)
 with cold:        
     fulltext = st.text_input(
         "Ord eller fraser i teksten", 
