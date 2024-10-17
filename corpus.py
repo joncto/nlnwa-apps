@@ -27,7 +27,7 @@ def to_excel(df):
     writer = pd.ExcelWriter(output, engine='openpyxl')
     df.to_excel(writer, index=False, sheet_name='Sheet1')
     worksheet = writer.sheets['Sheet1']
-    writer.save()
+    writer.close()
     processed_data = output.getvalue()
     return processed_data
 
@@ -42,7 +42,7 @@ def v(x):
 
 col_zero, col_two, col_three = st.columns([4, 1, 1])
 with col_zero:
-    st.subheader('Definer et korpus med innholdsdata og metadata')
+    st.subheader('Nettaviser - Bygg korpus')
 with col_three:
     st.markdown("""<style>
 img {
@@ -55,13 +55,12 @@ st.write("---")
 
 col2, col3 = st.columns([1, 3])
 
-# We have hardcoded "nettavis" here
 doctype = "nettavis"
 
 with col2:
     lang = st.multiselect(
         "Språk", 
-        ["nob", "nno", "dan", "swe", "sme", "smj", "fkv", "eng", "fra", "spa", "ger"],  
+        ["nob", "nno", "sma", "sme", "smj", "fkv", "eng", "dan", "swe", "fra", "spa", "ger"],  
         help="Velg fra listen"
     )
     lang = " AND ".join(list(lang))
@@ -73,15 +72,14 @@ with col3:
     year = today.year
     years = st.slider(
     'Årsspenn',
-    1810, year, (1950, year))
+    2019, year, (2022, year))
 
 
 #st.subheader("Forfatter og tittel") ###################################################
 cola, colb = st.columns(2)
 with cola:
-    author = st.text_input("Forfatter", "",
-                           help="Feltet blir kun tatt hensyn til for digibok",
-                           disabled=True)  # Disabled since "nettavis" doesn't use this
+    publisher = st.text_input("Publisher", "",
+                           help="Angi domenenavn",
 
 with colb:
     title = st.text_input("Tittel", "",
@@ -97,16 +95,6 @@ with cold:
         help="Matching på innholdsord skiller ikke mellom stor og liten bokstav."
              " Trunkert søk er mulig, slik at demokrat* vil finne bøker som inneholder demokrati og demokratisk blant andre treff",
     )
-
-with cole:
-    ddk = st.text_input("Dewey desimaltall", "",
-                        help="Input matcher et deweynummer. For å matche hele serien føy til en `*`. Bruk OR for å kombinere: 364* OR 916*",
-                        disabled=True)  # Disabled since "nettavis" doesn't use this
-
-with colf:
-    subject = st.text_input("Emneord", "",
-                            help="For å matche på flere emner, skill med OR for alternativ"
-                                 " og AND for begrense. Trunkert søk går også — for eksempel vil barne* matche barnebok og barnebøker")
 
 
 df_defined = False
